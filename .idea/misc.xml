@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/HP/Downloads/dguard/app/src/main/res/layout/activity_algoritma2.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/Downloads/dguard/app/src/main/res/layout/activity_choosetype.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/Downloads/dguard/app/src/main/res/layout/activity_dekripsi.xml" value="0.22" />
+        <entry key="..\:/Users/HP/Downloads/dguard/app/src/main/res/layout/activity_download_file.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/Downloads/dguard/app/src/main/res/layout/activity_enkripsi.xml" value="0.2" />
+        <entry key="..\:/Users/HP/Downloads/dguard/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/HP/Downloads/dguard/app/src/main/res/layout/activity_main2.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/Downloads/dguard/app/src/main/res/layout/activity_upload_file.xml" value="0.22" />
+        <entry key="..\:/Users/HP/Downloads/dguard/app/src/main/res/layout/activity_uploadimg.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/Downloads/widya/app/src/main/res/layout/activity_algoritma2.xml" value="0.21" />
+        <entry key="..\:/Users/HP/Downloads/widya/app/src/main/res/layout/activity_download_file.xml" value="0.20153985507246377" />
+        <entry key="..\:/Users/HP/Downloads/widya/app/src/main/res/layout/activity_main.xml" value="0.10131712259371833" />
+        <entry key="..\:/Users/HP/Downloads/widya/app/src/main/res/layout/activity_main2.xml" value="0.15" />
+        <entry key="..\:/Users/HP/Downloads/widya/app/src/main/res/layout/activity_upload_file.xml" value="0.20153985507246377" />
+        <entry key="..\:/downloads/dguard/dguard/app/src/main/res/layout/activity_choose_type.xml" value="0.20416666666666666" />
+        <entry key="..\:/downloads/dguard/dguard/app/src/main/res/layout/activity_choosetype.xml" value="0.27447916666666666" />
+        <entry key="..\:/downloads/dguard/dguard/app/src/main/res/layout/activity_dekripsi.xml" value="0.27447916666666666" />
+        <entry key="..\:/downloads/dguard/dguard/app/src/main/res/layout/activity_download_file.xml" value="0.27447916666666666" />
+        <entry key="..\:/downloads/dguard/dguard/app/src/main/res/layout/activity_enkripsi.xml" value="0.27447916666666666" />
+        <entry key="..\:/downloads/dguard/dguard/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/downloads/dguard/dguard/app/src/main/res/layout/activity_main2.xml" value="0.27447916666666666" />
+        <entry key="..\:/downloads/dguard/dguard/app/src/main/res/layout/activity_upload_file.xml" value="0.27447916666666666" />
+        <entry key="..\:/downloads/dguard/dguard/app/src/main/res/layout/activity_uploadimg.xml" value="0.27447916666666666" />
+        <entry key="..\:/downloads/dguard/dguard/app/src/main/res/layout/activity_welcome.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
