@@ -2,97 +2,126 @@ package com.its.dguard;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.text.format.DateFormat;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import net.gotev.uploadservice.MultipartUploadRequest;
-import net.gotev.uploadservice.UploadNotificationConfig;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UploadFile extends AppCompatActivity {
-    public static final String UPLOAD_URL = "http://10.0.2.2/upload/file.php";
-    private final int PICK_PDF_REQUEST = 1;
-    private static final int STORAGE_PERMISSION_CODE = 123;
-    private Uri filePath;
 
+    ImageButton btnChoose;
+    private final String UPLOAD_URL = Endpoints.UPLOAD_FILE_URL;
+    private RequestQueue rQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_file);
 
-        ImageButton btnChoose = findViewById(R.id.upload);
-        ImageButton btnUse = findViewById(R.id.usefile);
-
-        btnChoose.setOnClickListener(view -> showFileChooser());
-        btnUse.setOnClickListener(view -> uploadMultipart());
+        btnChoose = findViewById(R.id.upload);
+        btnChoose.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            intent.setType("application/pdf");
+            startActivityForResult(intent, 1);
+        });
     }
 
-    public void uploadMultipart() {
-        Date d = new Date();
-        CharSequence s = DateFormat.format("yyyyMMdd-hh-mm-ss", d.getTime());
-        final String name = s.toString();
-        String path = FilePath.getPath(this, filePath);
-
-        if (path == null) {
-
-            Toast.makeText(this, "Mohon pindahkan file .PDF anda ke Internal Storage dan coba lagi", Toast.LENGTH_LONG).show();
-        } else {
-            try {
-                String uploadId = UUID.randomUUID().toString();
-
-                new MultipartUploadRequest(this, uploadId, UPLOAD_URL)
-                        .addFileToUpload(path, "pdf")
-                        .addParameter("name", name)
-                        .setNotificationConfig(new UploadNotificationConfig())
-                        .setMaxRetries(2)
-                        .startUpload();
-
-            } catch (Exception exc) {
-                Toast.makeText(this, exc.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private void showFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("application/pdf");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Pilih PDF yang diinginkan"), PICK_PDF_REQUEST);
-    }
-
+    @SuppressLint("Range")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
 
-        if (requestCode == PICK_PDF_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            filePath = data.getData();
-        }
-    }
+            Uri uri = data.getData();
+            String uriString = uri.toString();
+            String displayName;
 
-
-    @SuppressLint("MissingSuperCall")
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        if (requestCode == STORAGE_PERMISSION_CODE) {
-
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Ijin diberikan, sekarang anda bisa mengakses Internal Storage", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(this, "Mohon maaf, anda masih belum diijinkan", Toast.LENGTH_LONG).show();
+            if (uriString.startsWith("content://")) {
+                try (Cursor cursor = this.getContentResolver().query(uri, null, null, null, null)) {
+                    if (cursor != null && cursor.moveToFirst()) {
+                        displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                        uploadPDF(displayName, uri);
+                    }
+                }
             }
         }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
+    private void uploadPDF(final String pdfname, Uri pdffile) {
+
+        Date d = new Date();
+        CharSequence s = DateFormat.format("yyyyMMdd-hh-mm-ss", d.getTime());
+        final String date = s.toString();
+
+        InputStream iStream;
+        try {
+            iStream = getContentResolver().openInputStream(pdffile);
+            final byte[] inputData = getBytes(iStream);
+            VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, UPLOAD_URL,
+                    response -> {
+                        rQueue.getCache().clear();
+                        try {
+                            JSONObject jsonObject = new JSONObject(new String(response.data));
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            jsonObject.toString().replace("\\\\", "");
+                            jsonObject.getString("status");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    },
+                    error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show()) {
+
+                @Override
+                protected Map < String, String > getParams() {
+                    Map < String, String > params = new HashMap < > ();
+                    params.put("date", date);
+                    return params;
+                }
+
+                @Override
+                protected Map < String, DataPart > getByteData() {
+                    Map < String, DataPart > params = new HashMap < > ();
+                    params.put("file", new DataPart(pdfname, inputData));
+                    return params;
+                }
+            };
+            volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            rQueue = Volley.newRequestQueue(UploadFile.this);
+            rQueue.add(volleyMultipartRequest);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+        int len;
+        while ((len = inputStream.read(buffer)) != -1) {byteBuffer.write(buffer, 0, len);}
+        return byteBuffer.toByteArray();
+    }
 
 }

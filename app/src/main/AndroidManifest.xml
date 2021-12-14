@@ -25,6 +25,7 @@
         <activity android:name=".Dekripsi" android:exported="true" />
         <activity android:name=".ChooseType" android:exported="true" />
         <activity android:name=".UploadImg" android:exported="true" />
+        <activity android:name=".UploadFile" android:exported="true" />
         <activity android:name=".Main" android:exported="true" />
         <activity android:name=".MainActivity"
             tools:ignore="IntentFilterExportedReceiver" android:exported="true">

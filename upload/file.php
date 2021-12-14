@@ -1,87 +1,79 @@
-<?php
+<?php 
  
- define('DB_HOST','localhost');
- define('DB_USER','root');
- define('DB_PASS','');
- define('DB_NAME','upload');
-//this is our upload folder
-$upload_path = 'uploadfile/';
+ //Constants for database connection
+ define('DB_HOST','101.50.1.56');
+ define('DB_USER','bryanyeh_user');
+ define('DB_PASS','H@F6wmPKk6Rw7@V');
+ define('DB_NAME','bryanyeh_database');
+ define('UPLOAD_PATH', 'uploadfile/');
  
-//Getting the server ip
-$server_ip = gethostbyname(gethostname());
+ //connecting to database 
+ $conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME) or die('Unable to connect');
+ $response = array();
+ if(isset($_GET['apicall'])){
+ switch($_GET['apicall']){
  
-//creating the upload url
-$upload_url = 'http://'.$server_ip.'/AndroidPdfUpload/'.$upload_path;
+ //if it is an upload call we will upload the file
+ case 'uploadfile':
  
-//response array
-$response = array();
+ if(isset($_FILES['file']['name']) && isset($_POST['date'])){
+ try{
+ move_uploaded_file($_FILES['file']['tmp_name'], UPLOAD_PATH . $_FILES['file']['name']);
+ $stmt = $conn->prepare("INSERT INTO files (file, date) VALUES (?,?)");
+ $stmt->bind_param("ss", $_FILES['file']['name'],$_POST['date']);
+ if($stmt->execute()){
+ $response['error'] = false;
+ $response['message'] = 'File Sukses Terupload';
+ }else{
+ throw new Exception("Tidak Bisa Mengupload File");
+ }
+ }catch(Exception $e){
+ $response['error'] = true;
+ $response['message'] = 'Tidak Bisa Mengupload File';
+ }
  
+ }else{
+ $response['error'] = true;
+ $response['message'] = "Ada Parameter Yang Kurang";
+ }
+ break;
  
-if($_SERVER['REQUEST_METHOD']=='POST'){
+ //in this call we will fetch all the files 
+ case 'getfiles':
  
-    //checking the required parameters from the request
-    if(isset($_POST['name']) and isset($_FILES['pdf']['name'])){
+ $server_ip = gethostbyname(gethostname());
+ $stmt = $conn->prepare("SELECT id, file, date FROM files");
+ $stmt->execute();
+ $stmt->bind_result($id, $file, $date);
+ $files = array();
  
-        //connecting to the database
-        $con = mysqli_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME) or die('Unable to Connect...');
+ while($stmt->fetch()){
+ $temp = array();
+ $temp['id'] = $id; 
+ $temp['file'] = 'http://' . $server_ip . '/upload/'. UPLOAD_PATH . $file; 
+ $temp['date'] = $date; 
  
-        //getting name from the request
-        $name = $_POST['name'];
+ array_push($files, $temp);
+ }
  
-        //getting file info from the request
-        $fileinfo = pathinfo($_FILES['pdf']['name']);
+ //pushing the array in response 
+ $response['error'] = false;
+ $response['files'] = $files; 
+ break; 
  
-        //getting the file extension
-        $extension = $fileinfo['extension'];
+ default: 
+ $response['error'] = true;
+ $response['message'] = 'Invalid api call';
+ }
  
-        //file url to store in the database
-        $file_url = $upload_url . getFileName() . '.' . $extension;
+ }else{
+ header("HTTP/1.0 404 Not Found");
+ echo "<h1>Connected</h1>";
+ echo "The Database Connection is Successful.";
+ exit();
+ }
  
-        //file path to upload in the server
-        $file_path = $upload_path . getFileName() . '.'. $extension;
+ //displaying the response in json 
+ header('Content-Type: application/json');
+ echo json_encode($response);
  
-        //trying to save the file in the directory
-        try{
-            //saving the file
-            move_uploaded_file($_FILES['pdf']['tmp_name'],$file_path);
-            $sql = "INSERT INTO `notestacker`.`pdfs` (`id`, `url`, `name`) VALUES (NULL, '$file_url', '$name');";
- 
-            //adding the path and name to database
-            if(mysqli_query($con,$sql)){
- 
-                //filling response array with values
-                $response['error'] = false;
-                $response['url'] = $file_url;
-                $response['name'] = $name;
-            }
-            //if some error occurred
-        }catch(Exception $e){
-            $response['error']=true;
-            $response['message']=$e->getMessage();
-        } 
-        //closing the connection
-        mysqli_close($con);
-    }else{
-        $response['error']=true;
-        $response['message']='Please choose a file';
-    }
-    
-    //displaying the response
-    echo json_encode($response);
-}
- 
-/*
-We are generating the file name
-so this method will return a file name for the image to be upload
-*/
-function getFileName(){
-    $con = mysqli_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME) or die('Unable to Connect...');
-    $sql = "SELECT max(id) as id FROM pdfs";
-    $result = mysqli_fetch_array(mysqli_query($con,$sql));
- 
-    mysqli_close($con);
-    if($result['id']==null)
-        return 1;
-    else
-        return ++$result['id'];
-}
