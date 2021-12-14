@@ -20,15 +20,14 @@
         android:theme="@style/Theme.Dguard"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".DownloadFile" />
-        <activity android:name="com.its.dguard.UploadFile" />
-        <activity android:name=".Enkripsi" />
-        <activity android:name=".Dekripsi" />
-        <activity android:name=".ChooseType" />
-        <activity android:name=".UploadImg" />
-        <activity android:name=".Main" />
+        <activity android:name=".DownloadFile" android:exported="true" />
+        <activity android:name=".Enkripsi" android:exported="true" />
+        <activity android:name=".Dekripsi" android:exported="true" />
+        <activity android:name=".ChooseType" android:exported="true" />
+        <activity android:name=".UploadImg" android:exported="true" />
+        <activity android:name=".Main" android:exported="true" />
         <activity android:name=".MainActivity"
-            tools:ignore="IntentFilterExportedReceiver">
+            tools:ignore="IntentFilterExportedReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

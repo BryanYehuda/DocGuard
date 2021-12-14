@@ -154,7 +154,7 @@ public class UploadImg extends AppCompatActivity {
 
         Date d = new Date();
         CharSequence s = DateFormat.format("yyyyMMdd-hh-mm-ss", d.getTime());
-        final String tags = s.toString();
+        final String upload_date = s.toString();
 
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Endpoints.UPLOAD_URL,
                 response -> {
@@ -170,7 +170,7 @@ public class UploadImg extends AppCompatActivity {
             @Override
             protected Map < String, String > getParams() {
                 Map < String, String > params = new HashMap < > ();
-                params.put("tags", tags);
+                params.put("upload_date", upload_date);
                 return params;
             }
 
