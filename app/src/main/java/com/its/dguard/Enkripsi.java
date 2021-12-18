@@ -17,11 +17,24 @@ public class Enkripsi extends AppCompatActivity {
         ImageButton algoritma2 = findViewById(R.id.algoritma2);
         ImageButton algoritma3 = findViewById(R.id.algoritma3);
 
-        algoritma1.setOnClickListener(view -> opentype());
+        algoritma1.setOnClickListener(view -> opentype1());
+        algoritma2.setOnClickListener(view -> opentype2());
+        algoritma3.setOnClickListener(view -> opentype3());
     }
 
-    public void opentype() {
+    public void opentype1() {
         Intent intent = new Intent(this, ChooseType.class);
+        intent.putExtra("enkripsi","md5");
+        startActivity(intent);
+    }
+    public void opentype2() {
+        Intent intent = new Intent(this, ChooseType.class);
+        intent.putExtra("enkripsi","sha256");
+        startActivity(intent);
+    }
+    public void opentype3() {
+        Intent intent = new Intent(this, ChooseType.class);
+        intent.putExtra("enkripsi","algo");
         startActivity(intent);
     }
 

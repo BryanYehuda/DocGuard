@@ -3,6 +3,7 @@ package com.its.dguard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,18 +17,52 @@ public class ChooseType extends AppCompatActivity {
         ImageButton chooseImg = (ImageButton) findViewById(R.id.chooseimg);
         ImageButton chooseFile = (ImageButton) findViewById(R.id.choosefile);
 
-        chooseImg.setOnClickListener(view -> openUpImg());
+        //dapatkan string dari enkripsi
+        Intent i = getIntent();
+        String type = i.getStringExtra("enkripsi");
 
-        chooseFile.setOnClickListener(view -> openUpFile());
-    }
+        Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
 
-    public void openUpImg() {
-        Intent intent = new Intent(this, UploadImg.class);
-        startActivity(intent);
-    }
-
-    public void openUpFile() {
-        Intent intent = new Intent(this, com.its.dguard.UploadFile.class);
-        startActivity(intent);
+        //pengecekan
+        if (type.equals("md5")) {
+            chooseImg.setOnClickListener(view -> {
+                Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+                Intent intentImg = new Intent(this, uploadimgmd5.class);
+                intentImg.putExtra("type", "enkripsi");
+                startActivity(intentImg);
+            });
+            chooseFile.setOnClickListener(view -> {
+                Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+                Intent intentFile = new Intent(this, UploadFilemd5.class);
+                intentFile.putExtra("type", "enkripsi");
+                startActivity(intentFile);
+            });
+        } else if (type.equals("sha256")) {
+            chooseImg.setOnClickListener(view -> {
+                Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+                Intent intentImg = new Intent(this, uploadimgsha.class);
+                intentImg.putExtra("type", "enkripsi");
+                startActivity(intentImg);
+            });
+            chooseFile.setOnClickListener(view -> {
+                Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+                Intent intentFile = new Intent(this, UploadFilesha.class);
+                intentFile.putExtra("type", "enkripsi");
+                startActivity(intentFile);
+            });
+        } else if (type.equals("algo")) {
+            chooseImg.setOnClickListener(view -> {
+                Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+                Intent intentImg = new Intent(this, UploadImg.class);
+                intentImg.putExtra("type", "enkripsi");
+                startActivity(intentImg);
+            });
+            chooseFile.setOnClickListener(view -> {
+                Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+                Intent intentFile = new Intent(this, UploadFile.class);
+                intentFile.putExtra("type", "enkripsi");
+                startActivity(intentFile);
+            });
+        }
     }
 }

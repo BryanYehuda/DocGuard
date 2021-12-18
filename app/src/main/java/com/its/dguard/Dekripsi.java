@@ -17,11 +17,24 @@ public class Dekripsi extends AppCompatActivity {
         ImageButton algoritma2 = (ImageButton) findViewById(R.id.algoritma2);
         ImageButton algoritma3 = (ImageButton) findViewById(R.id.algoritma3);
 
-        algoritma1.setOnClickListener(view -> chooseType());
+        algoritma1.setOnClickListener(view -> opentype1());
+        algoritma2.setOnClickListener(view -> opentype2());
+        algoritma3.setOnClickListener(view -> opentype3());
     }
 
-    public void chooseType() {
-        Intent intent = new Intent(this, ChooseType.class);
+    public void opentype1() {
+        Intent intent = new Intent(this, ChooseType2.class);
+        intent.putExtra("dekripsi","md5");
+        startActivity(intent);
+    }
+    public void opentype2() {
+        Intent intent = new Intent(this, ChooseType2.class);
+        intent.putExtra("dekripsi","sha256");
+        startActivity(intent);
+    }
+    public void opentype3() {
+        Intent intent = new Intent(this, ChooseType2.class);
+        intent.putExtra("dekripsi","algo");
         startActivity(intent);
     }
 
