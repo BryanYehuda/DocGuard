@@ -52,7 +52,7 @@ public class ChooseType2 extends AppCompatActivity {
                 startActivity(intentFile);
             });
         }
-        else if (type.equals("algo")){
+        else if (type.equals("rsa")){
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this,type,Toast.LENGTH_SHORT).show();
                 Intent intentImg = new Intent(this,UploadImg.class);

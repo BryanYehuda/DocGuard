@@ -50,7 +50,7 @@ public class ChooseType extends AppCompatActivity {
                 intentFile.putExtra("type", "enkripsi");
                 startActivity(intentFile);
             });
-        } else if (type.equals("algo")) {
+        } else if (type.equals("rsa")) {
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
                 Intent intentImg = new Intent(this, UploadImg.class);
