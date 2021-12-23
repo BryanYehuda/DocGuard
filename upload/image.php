@@ -42,7 +42,7 @@
  case 'getpics':
  
  $server_ip = gethostbyname(gethostname());
- $stmt = $conn->prepare("SELECT id, image, date FROM images");
+ $stmt = $conn->prepare("SELECT id, image, date FROM images ORDER BY id DESC LIMIT 0, 1");
  $stmt->execute();
  $stmt->bind_result($id, $image, $date);
  $images = array();
