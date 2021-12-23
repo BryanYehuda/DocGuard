@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadFilesha">
+    tools:context=".DownloadFile">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/imageView10"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
@@ -19,29 +19,27 @@
         tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="273dp"
-        android:layout_height="30dp"
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:srcCompat="@drawable/teks3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:srcCompat="@drawable/teks4"
         tools:ignore="ContentDescription" />
 
     <ImageButton
-        android:id="@+id/upload"
+        android:id="@+id/downloadImg"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:srcCompat="@drawable/tupload"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        app:srcCompat="@drawable/tdownload"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

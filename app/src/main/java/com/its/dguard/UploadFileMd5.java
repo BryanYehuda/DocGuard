@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UploadFilemd5 extends AppCompatActivity {
+public class UploadFileMd5 extends AppCompatActivity {
 
     ImageButton btnChoose;
     private final String UPLOAD_URL = Endpoints.UPLOAD_FILE_URL;
@@ -107,7 +107,7 @@ public class UploadFilemd5 extends AppCompatActivity {
                 }
             };
             volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            rQueue = Volley.newRequestQueue(UploadFilemd5.this);
+            rQueue = Volley.newRequestQueue(UploadFileMd5.this);
             rQueue.add(volleyMultipartRequest);
 
         } catch (IOException e) {

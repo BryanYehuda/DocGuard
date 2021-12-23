@@ -37,7 +37,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class uploadimgmd5 extends AppCompatActivity {
+public class UploadImgMd5 extends AppCompatActivity {
 
     ImageButton btnCapture, btnChoose, btnUse;
     ImageView imageView;
@@ -73,7 +73,7 @@ public class uploadimgmd5 extends AppCompatActivity {
             startActivityForResult(capture, CODE_CAMERA_CAPTURE);
         });
 
-        btnChoose.setOnClickListener(view -> ActivityCompat.requestPermissions(uploadimgmd5.this, new String[] {
+        btnChoose.setOnClickListener(view -> ActivityCompat.requestPermissions(UploadImgMd5.this, new String[] {
                 Manifest.permission.READ_EXTERNAL_STORAGE
         }, CODE_GALLERY_REQUEST));
 
@@ -139,7 +139,7 @@ public class uploadimgmd5 extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(uploadimgmd5.this, "Foto Telah Terupload ke ImageView", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UploadImgMd5.this, "Foto Telah Terupload ke ImageView", Toast.LENGTH_SHORT).show();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

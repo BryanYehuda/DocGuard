@@ -27,13 +27,13 @@ public class ChooseType2 extends AppCompatActivity {
         if(type.equals("md5") ){
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this,type,Toast.LENGTH_SHORT).show();
-                Intent intentImg = new Intent(this,uploadimgmd5.class);
+                Intent intentImg = new Intent(this, UploadImgMd5.class);
                 intentImg.putExtra("type","dekripsi");
                 startActivity(intentImg);
             });
             chooseFile.setOnClickListener(view -> {
                 Toast.makeText(this,type,Toast.LENGTH_SHORT).show();
-                Intent intentFile = new Intent(this , UploadFilemd5.class);
+                Intent intentFile = new Intent(this , UploadFileMd5.class);
                 intentFile.putExtra("type","dekripsi");
                 startActivity(intentFile);
             });
@@ -41,13 +41,13 @@ public class ChooseType2 extends AppCompatActivity {
         else if (type.equals("sha256")){
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this,type,Toast.LENGTH_SHORT).show();
-                Intent intentImg = new Intent(this,uploadimgsha.class);
+                Intent intentImg = new Intent(this, UploadImgSha.class);
                 intentImg.putExtra("type","dekripsi");
                 startActivity(intentImg);
             });
             chooseFile.setOnClickListener(view -> {
                 Toast.makeText(this,type,Toast.LENGTH_SHORT).show();
-                Intent intentFile = new Intent(this , UploadFilesha.class);
+                Intent intentFile = new Intent(this , UploadFileSha.class);
                 intentFile.putExtra("type","dekripsi");
                 startActivity(intentFile);
             });
