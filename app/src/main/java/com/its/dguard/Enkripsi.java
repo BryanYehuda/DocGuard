@@ -34,7 +34,7 @@ public class Enkripsi extends AppCompatActivity {
     }
     public void opentype3() {
         Intent intent = new Intent(this, ChooseType.class);
-        intent.putExtra("enkripsi","algo");
+        intent.putExtra("enkripsi","rsa");
         startActivity(intent);
     }
 

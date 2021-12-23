@@ -34,7 +34,7 @@ public class Dekripsi extends AppCompatActivity {
     }
     public void opentype3() {
         Intent intent = new Intent(this, ChooseType2.class);
-        intent.putExtra("dekripsi","algo");
+        intent.putExtra("dekripsi","rsa");
         startActivity(intent);
     }
 
