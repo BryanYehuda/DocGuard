@@ -42,7 +42,7 @@
  case 'getfiles':
  
  $server_ip = gethostbyname(gethostname());
- $stmt = $conn->prepare("SELECT id, file, date FROM files");
+ $stmt = $conn->prepare("SELECT id, file, date FROM files ORDER BY id DESC LIMIT 0, 1");
  $stmt->execute();
  $stmt->bind_result($id, $file, $date);
  $files = array();
