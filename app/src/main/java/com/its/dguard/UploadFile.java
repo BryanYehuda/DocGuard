@@ -125,3 +125,6 @@ public class UploadFile extends AppCompatActivity {
     }
 
 }
+//intent ke download file
+// Intent intent = new Intent(this, DownloadFile.class);
+//startActivity(intent);

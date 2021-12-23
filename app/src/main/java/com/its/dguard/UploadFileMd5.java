@@ -124,4 +124,8 @@ public class UploadFileMd5 extends AppCompatActivity {
         return byteBuffer.toByteArray();
     }
 
+
 }
+//intent ke download file
+// Intent intent = new Intent(this, DownloadFile.class);
+//startActivity(intent);

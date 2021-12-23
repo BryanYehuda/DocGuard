@@ -78,6 +78,7 @@ public class UploadImg extends AppCompatActivity {
         }, CODE_GALLERY_REQUEST));
 
         btnUse.setOnClickListener(view -> {
+
             imageView.invalidate();
             BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
             Bitmap bm = drawable.getBitmap();
@@ -87,7 +88,12 @@ public class UploadImg extends AppCompatActivity {
             Bitmap scaledBitmap = Bitmap.createScaledBitmap(bm, 1024, 768, true);
             Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
             uploadBitmap(rotatedBitmap);
+
+            Intent intent = new Intent(this, DownloadImg.class);
+            startActivity(intent);
+
         });
+
     }
 
     private void captureImage() throws IOException {

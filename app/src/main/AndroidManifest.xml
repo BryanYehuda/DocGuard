@@ -21,6 +21,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
         <activity android:name=".DownloadFile" android:exported="true" />
+        <activity android:name=".DownloadImg" android:exported="true" />
         <activity android:name=".Enkripsi" android:exported="true" />
         <activity android:name=".Dekripsi" android:exported="true" />
         <activity android:name=".ChooseType" android:exported="true" />
