@@ -38,7 +38,7 @@ public class ChooseType2 extends AppCompatActivity {
                 startActivity(intentFile);
             });
         }
-        else if (type.equals("ANDA TELAH MEMILIH SHA256")){
+        else if (type.equals("ANDA TELAH MEMILIH AES")){
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this,type,Toast.LENGTH_SHORT).show();
                 Intent intentImg = new Intent(this, UploadImgSha.class);
@@ -52,7 +52,7 @@ public class ChooseType2 extends AppCompatActivity {
                 startActivity(intentFile);
             });
         }
-        else if (type.equals("ANDA TELAH MEMILIH RSA")){
+        else if (type.equals("ANDA TELAH MEMILIH DES")){
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this,type,Toast.LENGTH_SHORT).show();
                 Intent intentImg = new Intent(this, UploadImgRsa.class);

@@ -24,12 +24,12 @@ public class Dekripsi extends AppCompatActivity {
 
     public void opentype1() {
         Intent intent = new Intent(this, ChooseType2.class);
-        intent.putExtra("dekripsi","ANDA TELAH MEMILIH MD5");
+        intent.putExtra("dekripsi","ANDA TELAH MEMILIH AES");
         startActivity(intent);
     }
     public void opentype2() {
         Intent intent = new Intent(this, ChooseType2.class);
-        intent.putExtra("dekripsi","ANDA TELAH MEMILIH SHA256");
+        intent.putExtra("dekripsi","ANDA TELAH MEMILIH DES");
         startActivity(intent);
     }
     public void opentype3() {

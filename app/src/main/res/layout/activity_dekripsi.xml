@@ -40,7 +40,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:srcCompat="@drawable/md5"
+        app:srcCompat="@drawable/aes"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <ImageButton
@@ -51,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/algoritma1"
-        app:srcCompat="@drawable/sha256"
+        app:srcCompat="@drawable/des"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <ImageButton
