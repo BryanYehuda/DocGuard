@@ -89,9 +89,6 @@ public class UploadImg extends AppCompatActivity {
             Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
             uploadBitmap(rotatedBitmap);
 
-            Intent intent = new Intent(this, DownloadImg.class);
-            startActivity(intent);
-
         });
 
     }
@@ -190,6 +187,8 @@ public class UploadImg extends AppCompatActivity {
         };
 
         Volley.newRequestQueue(this).add(volleyMultipartRequest);
+        Intent intent = new Intent(this, DownloadImg.class);
+        startActivity(intent);
     }
 
 }

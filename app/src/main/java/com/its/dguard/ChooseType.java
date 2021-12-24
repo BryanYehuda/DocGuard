@@ -24,7 +24,7 @@ public class ChooseType extends AppCompatActivity {
         Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
 
         //pengecekan
-        if (type.equals("md5")) {
+        if (type.equals("ANDA TELAH MEMILIH MD5")) {
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
                 Intent intentImg = new Intent(this, UploadImgMd5.class);
@@ -37,7 +37,7 @@ public class ChooseType extends AppCompatActivity {
                 intentFile.putExtra("type", "enkripsi");
                 startActivity(intentFile);
             });
-        } else if (type.equals("sha256")) {
+        } else if (type.equals("ANDA TELAH MEMILIH SHA256")) {
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
                 Intent intentImg = new Intent(this, UploadImgSha.class);
@@ -50,7 +50,7 @@ public class ChooseType extends AppCompatActivity {
                 intentFile.putExtra("type", "enkripsi");
                 startActivity(intentFile);
             });
-        } else if (type.equals("rsa")) {
+        } else if (type.equals("ANDA TELAH MEMILIH RSA")) {
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
                 Intent intentImg = new Intent(this, UploadImg.class);

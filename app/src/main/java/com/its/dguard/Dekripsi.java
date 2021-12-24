@@ -24,17 +24,17 @@ public class Dekripsi extends AppCompatActivity {
 
     public void opentype1() {
         Intent intent = new Intent(this, ChooseType2.class);
-        intent.putExtra("dekripsi","md5");
+        intent.putExtra("dekripsi","ANDA TELAH MEMILIH MD5");
         startActivity(intent);
     }
     public void opentype2() {
         Intent intent = new Intent(this, ChooseType2.class);
-        intent.putExtra("dekripsi","sha256");
+        intent.putExtra("dekripsi","ANDA TELAH MEMILIH SHA256");
         startActivity(intent);
     }
     public void opentype3() {
         Intent intent = new Intent(this, ChooseType2.class);
-        intent.putExtra("dekripsi","rsa");
+        intent.putExtra("dekripsi","ANDA TELAH MEMILIH RSA");
         startActivity(intent);
     }
 
