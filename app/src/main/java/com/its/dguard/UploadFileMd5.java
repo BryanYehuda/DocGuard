@@ -113,6 +113,8 @@ public class UploadFileMd5 extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Intent intent = new Intent(this, DownloadFile.class);
+        startActivity(intent);
     }
 
     public byte[] getBytes(InputStream inputStream) throws IOException {
@@ -127,5 +129,4 @@ public class UploadFileMd5 extends AppCompatActivity {
 
 }
 //intent ke download file
-// Intent intent = new Intent(this, DownloadFile.class);
-//startActivity(intent);
+//

@@ -113,6 +113,8 @@ public class UploadFileRsa extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Intent intent = new Intent(this, DownloadFile.class);
+        startActivity(intent);
     }
 
     public byte[] getBytes(InputStream inputStream) throws IOException {
