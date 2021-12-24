@@ -36,7 +36,7 @@ public class UploadFileSha extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_file);
+        setContentView(R.layout.activity_uploadfile_sha);
 
         btnChoose = findViewById(R.id.upload);
         btnChoose.setOnClickListener(v -> {

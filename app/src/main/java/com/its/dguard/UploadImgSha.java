@@ -50,7 +50,7 @@ public class UploadImgSha extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_img);
+        setContentView(R.layout.activity_uploadimg_sha);
 
         imageView = findViewById(R.id.imageView14);
         btnCapture = findViewById(R.id.captureimg);
