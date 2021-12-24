@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.ImageButton;
 
@@ -27,6 +28,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Date;
 
 public class DownloadImg extends AppCompatActivity {
 
@@ -95,9 +97,19 @@ public class DownloadImg extends AppCompatActivity {
                 URLConnection connection = url.openConnection();
                 connection.connect();
 
+                Date d = new Date();
+                CharSequence s = DateFormat.format("yyyyMMdd-hh-mm-ss", d.getTime());
+                final String date = s.toString();
+
+                File Folder = new File(Environment.getExternalStorageDirectory(), "HasilDownload");
+                if (!Folder.exists()) { Folder.mkdirs(); }
+
+                String fileName = date + ".png";
+                File image = new File(Folder, fileName);
+
                 int lenghtOfFile = connection.getContentLength();
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
-                OutputStream output = new FileOutputStream(Environment.getExternalStorageDirectory().toString() + "/2021.png");
+                OutputStream output = new FileOutputStream(image);
 
                 byte[] data = new byte[1024];
                 long total = 0;

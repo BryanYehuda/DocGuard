@@ -37,7 +37,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UploadImg extends AppCompatActivity {
+public class UploadImgRsa extends AppCompatActivity {
 
     ImageButton btnCapture, btnChoose, btnUse;
     ImageView imageView;
@@ -73,7 +73,7 @@ public class UploadImg extends AppCompatActivity {
             startActivityForResult(capture, CODE_CAMERA_CAPTURE);
         });
 
-        btnChoose.setOnClickListener(view -> ActivityCompat.requestPermissions(UploadImg.this, new String[] {
+        btnChoose.setOnClickListener(view -> ActivityCompat.requestPermissions(UploadImgRsa.this, new String[] {
                 Manifest.permission.READ_EXTERNAL_STORAGE
         }, CODE_GALLERY_REQUEST));
 
@@ -142,7 +142,7 @@ public class UploadImg extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(UploadImg.this, "Foto Telah Terupload ke ImageView", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UploadImgRsa.this, "Foto Telah Terupload ke ImageView", Toast.LENGTH_SHORT).show();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

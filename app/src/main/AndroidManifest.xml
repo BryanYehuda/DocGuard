@@ -26,10 +26,10 @@
         <activity android:name=".Dekripsi" android:exported="true" />
         <activity android:name=".ChooseType" android:exported="true" />
         <activity android:name=".ChooseType2" android:exported="true" />
-        <activity android:name=".UploadImg" android:exported="true" />
+        <activity android:name=".UploadImgRsa" android:exported="true" />
         <activity android:name=".UploadImgMd5" android:exported="true" />
         <activity android:name=".UploadImgSha" android:exported="true" />
-        <activity android:name=".UploadFile" android:exported="true" />
+        <activity android:name=".UploadFileRsa" android:exported="true" />
         <activity android:name=".UploadFileMd5" android:exported="true" />
         <activity android:name=".UploadFileSha" android:exported="true" />
         <activity android:name=".Main" android:exported="true" />

@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UploadFile extends AppCompatActivity {
+public class UploadFileRsa extends AppCompatActivity {
 
     ImageButton btnChoose;
     private final String UPLOAD_URL = Endpoints.UPLOAD_FILE_URL;
@@ -107,7 +107,7 @@ public class UploadFile extends AppCompatActivity {
                 }
             };
             volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            rQueue = Volley.newRequestQueue(UploadFile.this);
+            rQueue = Volley.newRequestQueue(UploadFileRsa.this);
             rQueue.add(volleyMultipartRequest);
 
         } catch (IOException e) {

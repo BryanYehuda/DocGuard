@@ -55,13 +55,13 @@ public class ChooseType2 extends AppCompatActivity {
         else if (type.equals("ANDA TELAH MEMILIH RSA")){
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this,type,Toast.LENGTH_SHORT).show();
-                Intent intentImg = new Intent(this,UploadImg.class);
+                Intent intentImg = new Intent(this, UploadImgRsa.class);
                 intentImg.putExtra("type","dekripsi");
                 startActivity(intentImg);
             });
             chooseFile.setOnClickListener(view -> {
                 Toast.makeText(this,type,Toast.LENGTH_SHORT).show();
-                Intent intentFile = new Intent(this , UploadFile.class);
+                Intent intentFile = new Intent(this , UploadFileRsa.class);
                 intentFile.putExtra("type","dekripsi");
                 startActivity(intentFile);
             });
