@@ -50,7 +50,7 @@ public class UploadImgMd5 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_img);
+        setContentView(R.layout.activity_uploadimg_md5);
 
         imageView = findViewById(R.id.imageView14);
         btnCapture = findViewById(R.id.captureimg);
