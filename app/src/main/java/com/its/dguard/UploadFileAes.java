@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UploadFileSha extends AppCompatActivity {
+public class UploadFileAes extends AppCompatActivity {
 
     ImageButton btnChoose;
     private final String UPLOAD_URL = Endpoints.UPLOAD_FILE_URL;
@@ -36,7 +36,7 @@ public class UploadFileSha extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_uploadfile_sha);
+        setContentView(R.layout.activity_uploadfile_aes);
 
         btnChoose = findViewById(R.id.upload);
         btnChoose.setOnClickListener(v -> {
@@ -107,7 +107,7 @@ public class UploadFileSha extends AppCompatActivity {
                 }
             };
             volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            rQueue = Volley.newRequestQueue(UploadFileSha.this);
+            rQueue = Volley.newRequestQueue(UploadFileAes.this);
             rQueue.add(volleyMultipartRequest);
 
         } catch (IOException e) {
@@ -126,7 +126,7 @@ public class UploadFileSha extends AppCompatActivity {
         return byteBuffer.toByteArray();
     }
 
+
 }
 //intent ke download file
-// Intent intent = new Intent(this, DownloadFile.class);
-//startActivity(intent);
+//

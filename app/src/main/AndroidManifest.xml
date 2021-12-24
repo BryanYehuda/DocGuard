@@ -27,11 +27,11 @@
         <activity android:name=".ChooseType" android:exported="true" />
         <activity android:name=".ChooseType2" android:exported="true" />
         <activity android:name=".UploadImgRsa" android:exported="true" />
-        <activity android:name=".UploadImgMd5" android:exported="true" />
-        <activity android:name=".UploadImgSha" android:exported="true" />
+        <activity android:name=".UploadImgDes" android:exported="true" />
+        <activity android:name=".UploadImgAes" android:exported="true" />
         <activity android:name=".UploadFileRsa" android:exported="true" />
-        <activity android:name=".UploadFileMd5" android:exported="true" />
-        <activity android:name=".UploadFileSha" android:exported="true" />
+        <activity android:name=".UploadFileAes" android:exported="true" />
+        <activity android:name=".UploadFileDes" android:exported="true" />
         <activity android:name=".Main" android:exported="true" />
         <activity android:name=".MainActivity"
             tools:ignore="IntentFilterExportedReceiver" android:exported="true">

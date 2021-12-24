@@ -37,7 +37,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UploadImgMd5 extends AppCompatActivity {
+public class UploadImgDes extends AppCompatActivity {
 
     ImageButton btnCapture, btnChoose, btnUse;
     ImageView imageView;
@@ -50,7 +50,7 @@ public class UploadImgMd5 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_uploadimg_md5);
+        setContentView(R.layout.activity_uploadimg_des);
 
         imageView = findViewById(R.id.imageView14);
         btnCapture = findViewById(R.id.captureimg);
@@ -73,7 +73,7 @@ public class UploadImgMd5 extends AppCompatActivity {
             startActivityForResult(capture, CODE_CAMERA_CAPTURE);
         });
 
-        btnChoose.setOnClickListener(view -> ActivityCompat.requestPermissions(UploadImgMd5.this, new String[] {
+        btnChoose.setOnClickListener(view -> ActivityCompat.requestPermissions(UploadImgDes.this, new String[] {
                 Manifest.permission.READ_EXTERNAL_STORAGE
         }, CODE_GALLERY_REQUEST));
 
@@ -140,7 +140,7 @@ public class UploadImgMd5 extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(UploadImgMd5.this, "Foto Telah Terupload ke ImageView", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UploadImgDes.this, "Foto Telah Terupload ke ImageView", Toast.LENGTH_SHORT).show();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

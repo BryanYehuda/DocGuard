@@ -37,7 +37,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UploadImgSha extends AppCompatActivity {
+public class UploadImgAes extends AppCompatActivity {
 
     ImageButton btnCapture, btnChoose, btnUse;
     ImageView imageView;
@@ -50,7 +50,7 @@ public class UploadImgSha extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_uploadimg_sha);
+        setContentView(R.layout.activity_uploadimg_aes);
 
         imageView = findViewById(R.id.imageView14);
         btnCapture = findViewById(R.id.captureimg);
@@ -73,7 +73,7 @@ public class UploadImgSha extends AppCompatActivity {
             startActivityForResult(capture, CODE_CAMERA_CAPTURE);
         });
 
-        btnChoose.setOnClickListener(view -> ActivityCompat.requestPermissions(UploadImgSha.this, new String[] {
+        btnChoose.setOnClickListener(view -> ActivityCompat.requestPermissions(UploadImgAes.this, new String[] {
                 Manifest.permission.READ_EXTERNAL_STORAGE
         }, CODE_GALLERY_REQUEST));
 
@@ -140,7 +140,7 @@ public class UploadImgSha extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(UploadImgSha.this, "Foto Telah Terupload ke ImageView", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UploadImgAes.this, "Foto Telah Terupload ke ImageView", Toast.LENGTH_SHORT).show();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

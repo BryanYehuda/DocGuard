@@ -27,26 +27,26 @@ public class ChooseType extends AppCompatActivity {
         if (type.equals("ANDA TELAH MEMILIH AES")) {
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
-                Intent intentImg = new Intent(this, UploadImgMd5.class);
+                Intent intentImg = new Intent(this, UploadImgDes.class);
                 intentImg.putExtra("type", "enkripsi");
                 startActivity(intentImg);
             });
             chooseFile.setOnClickListener(view -> {
                 Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
-                Intent intentFile = new Intent(this, UploadFileMd5.class);
+                Intent intentFile = new Intent(this, UploadFileAes.class);
                 intentFile.putExtra("type", "enkripsi");
                 startActivity(intentFile);
             });
         } else if (type.equals("ANDA TELAH MEMILIH DES")) {
             chooseImg.setOnClickListener(view -> {
                 Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
-                Intent intentImg = new Intent(this, UploadImgSha.class);
+                Intent intentImg = new Intent(this, UploadImgAes.class);
                 intentImg.putExtra("type", "enkripsi");
                 startActivity(intentImg);
             });
             chooseFile.setOnClickListener(view -> {
                 Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
-                Intent intentFile = new Intent(this, UploadFileSha.class);
+                Intent intentFile = new Intent(this, UploadFileDes.class);
                 intentFile.putExtra("type", "enkripsi");
                 startActivity(intentFile);
             });
